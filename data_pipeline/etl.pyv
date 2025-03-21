@@ -1,0 +1,33 @@
+# data_pipeline/etl.py
+import logging
+from sqlalchemy import text
+from db_config import engine
+
+def insert_articles(article_list):
+    """Insert scraped articles into the database."""
+    insert_query = text("""
+        INSERT INTO articles (title, abstract)
+        VALUES (:title, :abstract)
+    """)
+    with engine.connect() as conn:
+        for article in article_list:
+            conn.execute(insert_query, **article)
+        conn.commit()
+
+if __name__ == "__main__":
+    # Example usage
+    from scraping.scraper import MedicalScraper
+    from scraping.data_cleaning import process_scraped_data
+    
+    # Scrape
+    base_url = "https://example.com/pubmed-like-endpoint"
+    scraper = MedicalScraper(base_url, max_pages=2)
+    data = scraper.scrape()
+
+    # Clean
+    cleaned = process_scraped_data(data)
+
+    # Insert
+    insert_articles(cleaned)
+
+    logging.info(f"Inserted {len(cleaned)} articles into the DB.")
