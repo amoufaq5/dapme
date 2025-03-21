@@ -1,0 +1,21 @@
+<!-- webapp/templates/triage.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Diagnosis</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Text-based Diagnosis</h1>
+    <form action="/triage" method="post">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+        <label for="appearance">Appearance:</label>
+        <input type="text" name="appearance" required><br>
+        <label for="symptoms">Symptoms:</label>
+        <textarea name="symptoms" required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>
