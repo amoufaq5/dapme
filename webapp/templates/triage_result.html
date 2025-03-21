@@ -1,0 +1,14 @@
+<!-- webapp/templates/triage_result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triage Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Triage Result</h1>
+    <p><strong>Triage Recommendation:</strong> {{ result.triage_result }}</p>
+    <p><strong>NLP Diagnosis:</strong> {{ result.nlp_diagnosis }}</p>
+    <a href="/triage">Try Again</a> | <a href="/">Home</a>
+</body>
+</html>
