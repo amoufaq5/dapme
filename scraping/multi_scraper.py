@@ -57,8 +57,9 @@ class MultiSourceScraper:
 if __name__ == "__main__":
     # Define your sources with actual, ready-to-scrape URLs.
     sources = {
-        "pubmed": "https://example.com/pubmed?term=medicine",          # Replace with actual PubMed URL
-        "clinicaltrials": "https://example.com/clinicaltrials?term=medicine"  # Replace with actual ClinicalTrials URL
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov",          # Replace with actual PubMed URL
+        "clinicaltrials": "https://clinicaltrials.gov/"  # Replace with actual ClinicalTrials URL
+        "FDA": "https://www.fda.gov/drugs"
     }
     scraper = MultiSourceScraper(sources, max_pages=3)
     all_data = scraper.scrape_all()
